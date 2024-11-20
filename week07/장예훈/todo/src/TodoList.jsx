@@ -1,31 +1,28 @@
 import React from "react";
-import TodoItem from "./todoItem";
+import TodoItem from "./TodoItem";
 import { deleteData, checkData } from "./api/Apis";
 
 
 
 const TodoList = ({todoList, setTodoList}) => {
-
-
   const deleteTodo = async (id) => {
     const deleted = await deleteData(id) 
     if (deleted) {
-      const updatedTodoList = [...todoList];
       setTodoList((prevTodoList) => prevTodoList.filter((todo) => todo.id !== id));;
     }
   };
 
   const toggleComplete = async (id) => {
     const checked = await checkData(id)
-    if(checked) {
+    if(checked) { 
       setTodoList((prevTodoList) => {
         prevTodoList.map((todo) => {
-          todo.id === todoItem.id? {...todo, completed: !todo.completed }: todo
+          return todo.id === id ? {...todo, isComplete: !todo.isComplete }: todo
         })
       })
     }
     const updatedTodoList = todoList.map((todo) => 
-    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    todo.id === id ? { ...todo, isComplete: !todo.isComplete } : todo
     );
     setTodoList(updatedTodoList);
     
@@ -40,7 +37,7 @@ const TodoList = ({todoList, setTodoList}) => {
           todoItem={todoItem} 
           deleteTodo={deleteTodo} 
           toggleComplete={toggleComplete}
-          setTodoList={setTodoList}
+
           />
         ))}
       </ul>

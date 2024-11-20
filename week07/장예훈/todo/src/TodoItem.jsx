@@ -6,10 +6,10 @@ function TodoItem ({ todoItem, deleteTodo, toggleComplete }) {
       <li className='border-blue-300 border-2 flex justify-between items-center rounded-lg p-4'>
         <input
           type="checkbox"
-          checked={todoItem.completed}
+          checked={todoItem.isComplete}
           onChange={() => toggleComplete(todoItem.id)}
           className="mr-2"/>
-        <span className={todoItem.completed ? "line-through" : ""}>
+        <span className={todoItem.isComplete ? "line-through" : ""}>
           {todoItem.content}
         </span>
         <button 

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8080/todos'
+const url = "http://localhost:8080/todos"
 
 export const postData = async (newTodo) => {
   try{
@@ -22,12 +22,13 @@ export const deleteData = async (id) => {
 
 export const checkData = async (id) => {
   try{
-    const res = (await axios.post(`${url}/${id}`, {completed : true})).data;
-    return res
+    const res = (await axios.put(`${url}/${id}`, {isComplete : true})).data;
+    return res.isComplete
   } catch (error) {
     console.log(error, "투두 완료표시 싪패");
   }
 };
+
 
 
 

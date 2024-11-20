@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import PaintTodo from './paintTodo';
+import PaintTodo from './PaintTodo';
 import "tailwindcss/tailwind.css" ;
 import axios from 'axios';
 
@@ -7,7 +7,9 @@ const url = 'http://localhost:8080/todos'
 
 function App() {
   
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState([
+    { id: 1, text: "", isComplete: false },
+  ]);
   
 
 
